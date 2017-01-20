@@ -1,6 +1,21 @@
 # spring-boot-plugins-example
-An example of building a spring-boot application extendable with plugins
+An example of building a spring-boot application extendable with plugins.
+## Plugins? Why not osgi?
+This approach has some weak points:
+  * There is not separation between the plugins, its just all on one classpath at runtime. So be careful if you import dependencies in a plugin - they my conflict with the ones from another plugin
+  * You can only install plugins before you start the application, not at runtime
+  * You can not remove or update plugins at runtime
+
+But if you can live with this, it has some advantages too:
+  * No osgi runtime needed  
+  * One plugin can totally use the other. An extension of the database like the team plugin is not possible with osgi bundles AFAIK
+  * Simply use spring in all parts of your application
+  
+## Description
+This demo uses vaadin for the UI and spring-data-jpa with geodb and hibernate for persistence.
+  
 ## Usage
+
 1. Clone the reopsitory
 2. Build the stuff ``mvn install``
 3. Start the application: ``cd application/target`` and then: ``java -jar application-0.0.1-SNAPSHOT.jar``
